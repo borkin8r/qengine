@@ -6,7 +6,9 @@ option(BUILD_SDL "Build SDL platform" ON)
 option(BUILD_DOCS "Build documentation" ON)
 
 add_definitions(-DENGINE_VERSION="${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99 -Wall -Wextra -Wno-missing-field-initializers -Wno-unused-parameter -fno-strict-aliasing -fwrapv")
+if(CMAKE_COMPILER_IS_GNUCXX)
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99 -Wall -Wextra -Wno-missing-field-initializers -Wno-unused-parameter -fno-strict-aliasing -fwrapv")
+endif(CMAKE_COMPILER_IS_GNUCXX)
 string(REPLACE "-O3"
                "-O2"
                CMAKE_C_FLAGS_RELEASE

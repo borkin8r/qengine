@@ -758,9 +758,13 @@ void Com_BeginRedirect(int target, char *buffer, int buffersize, void(*flush));
 
 void Com_EndRedirect(void);
 
+#ifdef _WIN32
+void Com_Printf(char *fmt, ...);
+void Com_DPrintf(char *fmt, ...);
+#else
 void Com_Printf(char *fmt, ...) __attribute__((format(printf, 1, 2)));
-
 void Com_DPrintf(char *fmt, ...) __attribute__((format(printf, 1, 2)));
+#endif
 
 void Com_VPrintf(int print_level, const char *fmt, va_list argptr); /* print_level is PRINT_ALL or PRINT_DEVELOPER */
 void Com_MDPrintf(char *fmt, ...);

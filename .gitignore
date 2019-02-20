@@ -8,3 +8,5 @@
 !/assets/maps
 !/assets/pics
 !/assets/textures
+.vs/
+CMakeFiles/
