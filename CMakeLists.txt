@@ -22,7 +22,7 @@ set(COMMON_LINKER_FLAGS)
 set(CLIENT_LINKER_FLAGS)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-  list(APPEND COMMON_LINKER_FLAGS "-lm -static-libgcc")
+  #list(APPEND COMMON_LINKER_FLAGS "-lm -static-libgcc")
 else()
   list(APPEND COMMON_LINKER_FLAGS "-lm -rdynamic")
 endif()

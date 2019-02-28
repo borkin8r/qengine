@@ -27,6 +27,8 @@
 /* Require Win XP or higher */
 #define _WIN32_WINNT 0x0501
 
+//needed for implementation of __imp_bind etc.
+#pragma comment(lib, "Ws2_32.lib")
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <wsipx.h>
