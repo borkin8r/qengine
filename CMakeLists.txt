@@ -22,7 +22,7 @@ set(COMMON_LINKER_FLAGS)
 set(CLIENT_LINKER_FLAGS)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-  #list(APPEND COMMON_LINKER_FLAGS "-lm -static-libgcc")
+  #list(APPEND COMMON_LINKER_FLAGS WIN32)
 else()
   list(APPEND COMMON_LINKER_FLAGS "-lm -rdynamic")
 endif()
@@ -257,8 +257,9 @@ set(SERVER_HEADER
 include_directories(${PROJECT_INCLUDE_DIRS})
 link_directories(${PROJECT_LINK_DIRS})
 
-# Client
+# Client fix:needs winmain instead of main
 add_executable(client
+               WIN32
                ${CLIENT_PLATFORM_SOURCE}
                ${CLIENT_PLATFORM_HEADER}
                ${CLIENT_SOURCE}
@@ -268,8 +269,9 @@ add_executable(client
 set_target_properties(client PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 target_link_libraries(client ${COMMON_LINKER_FLAGS} ${CLIENT_LINKER_FLAGS})
 
-# Dedicated Server
+# Dedicated Server fix:needs winmain instead of main
 add_executable(server
+               WIN32
                ${SERVER_PLATFORM_SOURCE}
                ${SERVER_PLATFORM_HEADER}
                ${SERVER_SOURCE}

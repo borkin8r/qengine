@@ -32,6 +32,10 @@
 #include "shared.h"
 #include "crc.h"
 
+#ifdef _WIN32
+#include <math.h>
+#endif
+
 #define ASSETS_DIRECTORY "assets"
 
 #ifndef BUILD_DATE
